@@ -1,0 +1,41 @@
+﻿@model IEnumerable<DeptDetails>
+
+<div class="row">
+    <div class="col-6">
+        <h1>Department Details</h1>
+    </div>
+</div>
+
+<div class="row mt-2">
+    <div class="col-12">
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>
+                        Department Id
+                    </th>
+                    <th>
+                        Department Name
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td width="20%">
+                            @item.Id
+                        </td>
+                        <td width="40%">
+                            @item.DepartmentName
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="col-4">
+            <a asp-controller="Emp" asp-action="Create" class="btn btn-danger w-50">Back</a>
+        </div>
+    </div>
+</div>

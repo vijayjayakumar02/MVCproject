@@ -1,0 +1,81 @@
+﻿@model IEnumerable<EmpDetails>
+
+<div class="row">
+    <div class="col-6">
+        <h4>Employee Details</h4>
+    </div>
+    <div class="col-3">
+        <a asp-action="Create" class="btn btn-primary">Add New Employee</a>
+    </div>
+    <div class="col-3">
+        <a asp-controller="Dept" asp-action="Create" class="btn btn-primary">Add Department</a>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-12">
+
+        <table class="table table-bordered table-striped" style="width: 100%">
+            <thead>
+                <tr>
+                    <th>
+                        Id
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Designation
+                    </th>
+                    <th>
+                        Department Id
+                    </th>
+                    <th>
+                        Hire Date
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                    <th>
+                        Edit
+                    </th>
+                    <th>
+                        Remove
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td width="10%">
+                            @item.Id
+                        </td>
+                        <td width="20%">
+                            @item.Name
+                        </td>
+                        <td width="20%">
+                            @item.Designation
+                        </td>
+                        <td width="20%">
+                            @item.DepartmentId
+                        </td>
+                        <td width="15%">
+                            @item.HireDate
+                        </td>
+                        <td>
+                            <a asp-action="Status" asp-route-id="@item.Id" class="btn btn-primary">Active</a>
+                        </td>
+                        <td width="15%">
+                            <a asp-action="Update" asp-route-id="@item.Id" class="btn btn-primary">Update</a>
+                        </td>
+                        <td width="15%">
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-primary"
+                               onclick="return confirm('Are you Sure to delete the Data')">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
